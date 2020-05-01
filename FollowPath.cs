@@ -42,7 +42,7 @@ public class FollowPath : MonoBehaviour
         currentWay=0;
         currentWaypoint=0;
         current[0]=currentWaypoint;current[1]=currentWay;
-        print( "waypointslength"+waypoints.Length);
+        //print( "waypointslength"+waypoints.Length);
        current=ChooseWaypoint(current);
        
         
@@ -53,7 +53,9 @@ public class FollowPath : MonoBehaviour
     void Update()
     {
      //destinationReach?ChooseWay();
-       if (agent.remainingDistance<0.01 && destinationReach==true){ current=ChooseWaypoint(current);print("updateonestarrivewaypoint");return;};
+       if (agent.remainingDistance<0.01 && destinationReach==true){ 
+         current=ChooseWaypoint(current);//print("updateonestarrivewaypoint");
+         return;};
      //print("agentRemainingDistance"+agent.remainingDistance);
      //if (agent.remainingDistance<0.001) print("on est arrive");
      
@@ -62,14 +64,14 @@ public class FollowPath : MonoBehaviour
     }
 
      public int[] ChooseWaypoint(int [] current){
-       print("ChoseWaypoint()");
+       //print("ChoseWaypoint()");
        destinationReach=false;//print("destinationReach"+destinationReach);
        //int a=0;
-       int a=Random.Range(0,waypoints.Length);print("a="+a);
+       int a=Random.Range(0,waypoints.Length);//print("a="+a);
        while (a==current[0]){
            a=Random.Range(0,waypoints.Length);
        }
-       current[0]=a; print("currentWaypoint"+current[0]);
+       current[0]=a; //print("currentWaypoint"+current[0]);
         //GoToWaypoint(currentWayPoint);
         current=ChooseWay(current);
         return current;
@@ -77,19 +79,19 @@ public class FollowPath : MonoBehaviour
 
     public void FinishWay(int [] current){
         //way is between 2 waypoints
-       print("FinishWay()");
+       //print("FinishWay()");
        //print("destinationReach"+destinationReach);
        //print(currentWaypoint);
        //print(dctWaypointWays[2]);
        //currentWay=Random.Range(1,dctWaypointWays[currentWaypoint].Length);currentWay+=-1;
         //print(currentWay);
-        print("currentWaypoint="+current[0]);
+       // print("currentWaypoint="+current[0]);
      GoToWaypoint(current);
     }
 
     public int[] ChooseWay(int [] current){
         //way is between 2 waypoints
-       print("ChoseWay()");
+       //print("ChoseWay()");
        //print(currentWaypoint);
        current[0]+=1;//car le dictionnaire commence à1
        //print(dctWaypointWays[2]);
@@ -108,14 +110,14 @@ public class FollowPath : MonoBehaviour
     }
 
     public void GoToWay(int[] current){
-        print("GoToWay()");print(current[1]);print("currentWay="+current[1]);
+        //print("GoToWay()");print(current[1]);print("currentWay="+current[1]);
         //if (!destinationReach)
        
        agent.SetDestination(ways[current[1]].transform.position);
     }
 
     public void GoToWaypoint(int []current){
-        print("GoToWaypoint()");
+        //print("GoToWaypoint()");
         //if (!destinationReach);
           //if (agent.remainingDistance<0.001 ) {print("on est arrive waypoint");destinationReach=true; return;};
           destinationReach=true;//print("destinationReach"+destinationReach);
